@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>Persistence</ID>
+  <OriginalElement>JavaeeElement:/1b9f4573/persistence.xml/dcawebapi/hibernate/Hibernate/PersistenceModel</OriginalElement>
+  <nodes>
+    <node x="0.0" y="0.0">AccAddressPrint#file://C:/java/dcawebapi/src/main/java/com/gbst/dca/demo/domain/dca/AccAddressPrint.java</node>
+    <node x="137.0" y="155.0">Acc#file://C:/java/dcawebapi/src/main/java/com/gbst/dca/demo/domain/dca/Acc.java</node>
+    <node x="12.5" y="80.0">AccAddress#file://C:/java/dcawebapi/src/main/java/com/gbst/dca/demo/domain/dca/AccAddress.java</node>
+    <node x="0.0" y="155.0">EodReports#file://C:/java/dcawebapi/src/main/java/com/gbst/dca/demo/domain/dca/EodReports.java</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="AccAddress#file://C:/java/dcawebapi/src/main/java/com/gbst/dca/demo/domain/dca/AccAddress.java" target="AccAddressPrint#file://C:/java/dcawebapi/src/main/java/com/gbst/dca/demo/domain/dca/AccAddressPrint.java">
+      <point x="-23.5" y="-15.0" />
+      <point x="36.0" y="55.0" />
+      <point x="29.75" y="55.0" />
+      <point x="-29.75" y="15.0" />
+    </edge>
+    <edge source="AccAddressPrint#file://C:/java/dcawebapi/src/main/java/com/gbst/dca/demo/domain/dca/AccAddressPrint.java" target="AccAddress#file://C:/java/dcawebapi/src/main/java/com/gbst/dca/demo/domain/dca/AccAddress.java">
+      <point x="29.75" y="15.0" />
+      <point x="89.25" y="55.0" />
+      <point x="83.0" y="55.0" />
+      <point x="23.5" y="-15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="452.0" y="474.5" />
+  <SelectedNodes>
+    <node>AccAddress#file://C:/java/dcawebapi/src/main/java/com/gbst/dca/demo/domain/dca/AccAddress.java</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Embeddables</Category>
+    <Category>Superclasses</Category>
+  </Categories>
+</Diagram>
+
