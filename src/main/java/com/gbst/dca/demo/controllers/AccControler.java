@@ -104,7 +104,6 @@ public class AccControler {
 
     }
 
-
     @RequestMapping("/code/{acc}")
     public ResponseEntity<Acc> findByName(@PathVariable String acc){
         Optional<Acc> result =repository.findAccByAcc(acc);
@@ -116,7 +115,7 @@ public class AccControler {
         return new ResponseEntity<Acc>(HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping("/lookup/{acc}")
+    @RequestMapping("/lookup/code/{acc}")
     public ResponseEntity<List<Map<String, String>>> lookUpbyAcc(@PathVariable String acc){
         List<Map<String, String>> result =lookUpServices.AccByAccCode(acc);
         if(result.size() > 0){
@@ -125,6 +124,13 @@ public class AccControler {
         return new ResponseEntity<List<Map<String, String>>>(HttpStatus.NOT_FOUND);
     }
 
-
+    @RequestMapping("/lookup/name/{name}")
+    public ResponseEntity<List<Map<String, String>>> lookUpbyName(@PathVariable String name){
+        List<Map<String, String>> result =lookUpServices.AccByAccName(name);
+        if(result.size() > 0){
+            return new ResponseEntity<List<Map<String, String>>>(result, HttpStatus.OK);
+        }
+        return new ResponseEntity<List<Map<String, String>>>(HttpStatus.NOT_FOUND);
+    }
 
 }

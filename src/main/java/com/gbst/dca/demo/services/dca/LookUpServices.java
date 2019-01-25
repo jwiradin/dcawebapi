@@ -1,6 +1,7 @@
 package com.gbst.dca.demo.services.dca;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 public class LookUpServices {
 
     @Autowired
+    @Qualifier("dataSource")
     DataSource dataSource;
 
 
@@ -32,6 +34,26 @@ public class LookUpServices {
 
             r.put("Acc",(String)row.get("Acc"));
             r.put("AccId", row.get("AccID").toString());
+
+            result.add(r);
+        }
+
+        return result;
+    }
+
+    public List<Map<String,String>> AccByAccName(String name){
+        JdbcTemplate template = new JdbcTemplate(dataSource);
+        String sql = "select AccName,AccID from (Select AccName, AccID, Rank() over (partition by left(AccName," + String.format("%d", name.length()+1) + ") order by AccName) as rank from Acc where AccName like '" + name + "%') a where a.rank <= 2";
+        //String sql = "select AccName,AccID from Acc where Acc.AccName like '" +name  + "%' and Acc.AccId >= 0";
+
+        List<Map<String,Object>> rows = template.queryForList(sql);
+        List<Map<String, String>> result = new ArrayList<>();
+
+        for(Map row:rows){
+            Map<String,String> r = new HashMap<>();
+
+            r.put("AccID",row.get("AccID").toString());
+            r.put("AccName", row.get("AccName").toString());
 
             result.add(r);
         }

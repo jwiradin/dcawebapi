@@ -48,7 +48,6 @@ public class CorporateController {
     @RequestMapping("/{id}/logo")
     public ResponseEntity<CorporateLogo> findLog(@PathVariable Integer id){
 
-
         Optional<Corporate> result = repository.findById(id);
 
         if(result.isPresent()){
