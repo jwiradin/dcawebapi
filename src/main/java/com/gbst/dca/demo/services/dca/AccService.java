@@ -26,7 +26,7 @@ public class AccService {
 
     public Acc find(int accId){
         Optional<Acc> result = accRepository.findById(accId);
-
+        //Optional<Acc> result = accRepository.retrieveSproc(accId);
         return result.isPresent()? result.get():null;
     }
 

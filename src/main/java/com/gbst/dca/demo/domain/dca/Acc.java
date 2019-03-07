@@ -22,6 +22,14 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Acc.findAll", query="SELECT a FROM Acc a")
+@NamedStoredProcedureQueries({
+		@NamedStoredProcedureQuery(name = "getSproc",
+				procedureName = "usp_pa_getAcc",
+				parameters = {
+						@StoredProcedureParameter(mode = ParameterMode.IN, name = "accId", type = Integer.class)
+				},
+				resultClasses = Acc.class)
+})
 public class Acc implements Serializable {
 	private static final long serialVersionUID = 1L;
 

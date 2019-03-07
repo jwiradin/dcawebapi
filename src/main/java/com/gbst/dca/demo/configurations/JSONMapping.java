@@ -13,4 +13,5 @@ public class JSONMapping {
     public Module datatypeHibernateModule() {
         return new Hibernate5Module();
     }
+
 }

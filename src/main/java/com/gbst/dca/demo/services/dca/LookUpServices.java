@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class LookUpServices {
 
     @Autowired
-    @Qualifier("dataSource")
+    @Qualifier("dcaDataSource")
     DataSource dataSource;
 
 

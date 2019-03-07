@@ -15,13 +15,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletResponse;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin
@@ -31,24 +27,23 @@ public class AccControler {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private AccRepository repository;
-
-    @Autowired
     LookUpServices lookUpServices;
 
+    @Autowired
+    AccRepository repository;
 
     @Autowired
     AccService accService;
 
-    @RequestMapping("/")
-    public Iterable<Acc> index(){
+    //@RequestMapping("/")
+    /*public Iterable<Acc> index(){
         return repository.findAll();
-    }
+    }*/
 
     @RequestMapping("/{id}")
     public ResponseEntity<Acc> find(@PathVariable Integer id){
+        //Acc result = accService.find(id);
         Acc result = accService.find(id);
-
         if(result != null)
             return new ResponseEntity<Acc> (result, HttpStatus.OK);
         else
