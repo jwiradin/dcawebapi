@@ -1,11 +1,12 @@
 package com.gbst.dca.domain.dca;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.*;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import java.sql.Timestamp;
 
 
@@ -43,11 +44,13 @@ public class AccAddressPrint implements Serializable {
 	@JsonBackReference
 	private AccAddress accAddress;
 
-	//bi-directional many-to-one association to EODReport
-	@ManyToOne(optional = true)
-	@JoinColumn(name="ReportID", insertable = false, updatable = false)
-	@Fetch(FetchMode.SELECT)
-	private EODReport eodreport;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumnsOrFormulas({
+			@JoinColumnOrFormula(formula = @JoinFormula(value="'CAADDRPRINT'", referencedColumnName = "codeType")),
+			@JoinColumnOrFormula(column=@JoinColumn(name="ReportID", referencedColumnName = "codeVal", insertable = false, updatable = false))
+	})
+	private CodeVal report;
+
 
 	public AccAddressPrint() {
 	}
@@ -100,12 +103,13 @@ public class AccAddressPrint implements Serializable {
 		this.accAddress = accAddress;
 	}
 
-	public EODReport getEodreport() {
-		return this.eodreport;
+	public CodeVal getReport() {
+		return report;
 	}
 
-	public void setEodreport(EODReport eodreport) {
-		this.eodreport = eodreport;
+	public void setReport(CodeVal report) {
+		this.report = report;
 	}
+
 
 }
